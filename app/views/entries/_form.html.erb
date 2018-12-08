@@ -1,0 +1,42 @@
+<%= form_for(@entry) do |f| %>
+  <% if @entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+      <% @entry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :entry_type %><br>
+    <select id="entry_type_id" name="entry[entry_type]">
+      <% Entry::ENTRY_TYPE.each do |entry| %>
+        <option value="<%=entry%>"><%=entry%></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :customer_id %><br>
+    <select id="entry_customer_id" name="entry[customer_id]">
+      <% @customers.each do |customer| %>
+        <option value="<%=customer.id%>"><%=customer.email%></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="field">
+    <%= f.label :book_id %><br>
+    <%#= f.number_field :book_id %>
+    <select id="entry_book_id" name="entry[book_id]">
+      <% @books.each do |book| %>
+        <option value="<%=book.id%>"><%=book.name%></option>
+      <% end %>
+    </select>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
