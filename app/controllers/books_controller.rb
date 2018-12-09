@@ -8,7 +8,7 @@ class BooksController < ApplicationController
   end
 
   def report
-    
+    @entries = Entry.where(created_at: Date.today.beginning_of_month..Date.today.end_of_month)
   end
 
   # GET /books/1

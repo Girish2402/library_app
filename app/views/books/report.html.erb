@@ -1,0 +1,19 @@
+<div class="container">
+	<div><h3>Current month report</h3></div>
+	<table class="table">
+		<tr>
+			<td>Book Name</td>
+			<td>Issue by</td>
+			<td>Customer name</td>
+			<td>Issue/Return</td>
+		</tr>
+		<%@entries.each do |e| %>
+		<tr>
+			<td><%=e.book.name%></td>
+			<td><%=e.user.email%></td>
+			<td><%=e.customer.name%></td>
+			<td><%=e.entry_type%></td>
+		</tr>
+		<%end%>
+	</table>
+</div>
